@@ -116,7 +116,7 @@
                 <Button   Command="{Binding PrePageCmd}" Margin="421,413,294,106"   Content="上一页" ></Button>
                 <Button   Command="{Binding NextPageCmd}" Margin="511,413,204,106"   Content="下一页" ></Button>
                 <local:DevButton Margin="64,469,454,48" DevName="ccc" />
-                <Button x:Name="t1" Margin="188,324,482,146" Style="{StaticResource ButtonStyle}"  >
+                <Button x:Name="t1" Margin="188,324,482,146"   >
                     
                        
                     
