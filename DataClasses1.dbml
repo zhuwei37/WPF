@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="school" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=127.0.0.1;Initial Catalog=school;User ID=sa;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="WpfApp1.Properties.Settings" SettingsPropertyName="schoolConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.student" Member="student">
+    <Type Name="student">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BirthDay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Association Name="student_score" Member="score" ThisKey="Student_ID" OtherKey="Student_ID" Type="score" />
+    </Type>
+  </Table>
+  <Table Name="dbo.teacher" Member="teacher">
+    <Type Name="teacher">
+      <Column Name="Teacher_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="teacher_course" Member="course" ThisKey="Teacher_ID" OtherKey="Teacher_ID" Type="course" />
+    </Type>
+  </Table>
+  <Table Name="dbo.course" Member="course">
+    <Type Name="course">
+      <Column Name="Course_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Teacher_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="course_score" Member="score" ThisKey="Course_ID" OtherKey="Course_ID" Type="score" />
+      <Association Name="teacher_course" Member="teacher" ThisKey="Teacher_ID" OtherKey="Teacher_ID" Type="teacher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.score" Member="score">
+    <Type Name="score">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Course_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Score" Member="Score1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="course_score" Member="course" ThisKey="Course_ID" OtherKey="Course_ID" Type="course" IsForeignKey="true" />
+      <Association Name="student_score" Member="student" ThisKey="Student_ID" OtherKey="Student_ID" Type="student" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
